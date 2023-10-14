@@ -6,6 +6,7 @@
 ██║  ██║███████╗██║  ██║██████╔╝    ██║ ╚═╝ ██║███████╗
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝     ╚═╝     ╚═╝╚══════╝
  - This scirpt is intended to scrape TMDB (themoviedb.org) images
+ - THE SITE'S DISPLAYNAME MUST BE IN ENGLISH OTHERWISE THE SCRIPT CANT DETECT IMAGES TO DOWNLOAD
  - It works by iterating through the page and then creating a zip file with the images using the library JSZip
  - Unlike other approaches this results only 1 file downloaded onto your computer
  - Usage: 1. Open devtools (ctrl+shift+I)
