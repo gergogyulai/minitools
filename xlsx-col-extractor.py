@@ -72,5 +72,4 @@ else:
     except Exception as e:
         print(f"\033[91mAn error occurred: {str(e)}\033[0m")
 
-# Close the Tkinter root window
 root.destroy()
