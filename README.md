@@ -18,4 +18,9 @@ Handy tools created for peronal use for myself, but I tought to share them
             </li>
         </ul>
     </li>
+    <li> 1. <a href="https://github.com/gergogyulai/minitools/blob/main/xlsx-col-extractor_GUI.py">XLSX Spreadsheet column extractor<a/>
+        <ul>
+            <li>Extract columns of excel spreadsheets into txt files</li>
+        </ul>
+    </li>
 </ul>
