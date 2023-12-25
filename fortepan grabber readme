@@ -1,0 +1,28 @@
+/*
+██████╗ ███████╗ █████╗ ██████╗     ███╗   ███╗███████╗
+██╔══██╗██╔════╝██╔══██╗██╔══██╗    ████╗ ████║██╔════╝
+██████╔╝█████╗  ███████║██║  ██║    ██╔████╔██║█████╗  
+██╔══██╗██╔══╝  ██╔══██║██║  ██║    ██║╚██╔╝██║██╔══╝  
+██║  ██║███████╗██║  ██║██████╔╝    ██║ ╚═╝ ██║███████╗
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝     ╚═╝     ╚═╝╚══════╝*/
+
+/* 
+
+ENGLISH:
+ALL images MUST be loaded due to dynamic content loading, unfortunately I haven't had time to solve this yet.
+- Usage:
+            1. Open developer tools (ctrl+shift+I)
+            2. Go to the console tab
+            3. Copy the ENTIRE contents of the file and paste it there
+            4. Enter
+            5. Download the txt file
+
+MAGYAR:
+MINDEN képnek be KELL lennie töltve a dynamic content loading miatt, sajnos erre még nem volt érkezesem hogy megoldjam.
+- Használat: 
+            1. Nyisd meg a fejlesztői eszközöket (ctrl+shift+I)
+            2. Lépj a konzol lapra
+            3. Másold ki a fájl TELJES tartalmát, majd illesszd be oda
+            4. Enter
+            5. Töltsd le a txt filet
+*/
