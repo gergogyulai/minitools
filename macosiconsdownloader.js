@@ -53,7 +53,7 @@ function scrapeAndDownloadImages() {
   // Iterate through the found <div> elements
   cardWrappers.forEach((cardWrapper, index) => {
     // Find <a> tags inside the current card wrapper
-    const linkElements = cardWrapper.querySelectorAll('a');
+    const linkElements = cardWrapper.querySelectorAll('div.card-img-wrapper a');
     linkElements.forEach((linkElement, linkIndex) => {
       const imageUrl = linkElement.getAttribute('href');
 
