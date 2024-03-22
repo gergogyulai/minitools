@@ -34,7 +34,7 @@ function createAndDownloadZip(zip, title) {
 }
 
 // Function to scrape image links and titles and download them
-function scrapeAndDownloadImages() {
+async function scrapeAndDownloadImages() {
   // Check if JSZip is defined
   if (typeof JSZip === 'undefined') {
     console.error('JSZip library is not available.');
@@ -50,6 +50,9 @@ function scrapeAndDownloadImages() {
   // Create a new instance of JSZip
   const zip = new JSZip();
 
+  // Array to hold all download promises
+  const downloadPromises = [];
+
   // Iterate through the found <div> elements
   cardWrappers.forEach((cardWrapper, index) => {
     // Find <a> tags inside the current card wrapper
@@ -63,15 +66,20 @@ function scrapeAndDownloadImages() {
         const titleText = h3Title.textContent.trim();
         const filename = `${titleText}_${index}_${linkIndex}.${imageUrl.split('.').pop()}`; // Keep the original extension
 
-        // Download and add image to the zip
-        downloadAndAddToZip(imageUrl, filename, zip);
+        // Create a download promise and add it to the array
+        const downloadPromise = downloadAndAddToZip(imageUrl, filename, zip);
+        downloadPromises.push(downloadPromise);
       }
     });
   });
 
+  // Wait for all download promises to resolve
+  await Promise.all(downloadPromises);
+
   // Create and download the zip file
   createAndDownloadZip(zip, title);
 }
+
 
 // Function to add a download button to the top of the page
 function addDownloadButton() {
