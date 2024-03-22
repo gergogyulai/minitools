@@ -98,6 +98,7 @@ function startInfiniteScroll() {
   window.addEventListener('keydown', stopScrolling);
 }
 
+
 // Function to reload the page
 function reloadPage() {
   location.reload();
