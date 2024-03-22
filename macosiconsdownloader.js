@@ -81,17 +81,17 @@ function scrapeAndDownloadImages() {
 
 // Function to initiate infinite scrolling
 function startInfiniteScroll() {
-  // Create an interval to scroll down the page repeatedly
+  // Scroll down the page at max speed until spacebar is pressed
   const scrollInterval = setInterval(() => {
-    window.scrollBy(0, 100); // Adjust the scrolling speed if needed
-  }, 100); // Adjust the scrolling interval if needed
+    window.scrollBy(0, window.innerHeight); // Scroll down at max speed
+  }, 0); // Adjust the scrolling interval for max speed
 
   // Listen for the spacebar keypress to stop scrolling and scroll to the top
   const stopScrolling = (event) => {
     if (event.code === 'Space') {
       clearInterval(scrollInterval);
-      window.removeEventListener('keydown', stopScrolling);
       window.scrollTo(0, 0); // Scroll to the top of the page
+      window.removeEventListener('keydown', stopScrolling);
     }
   };
 
