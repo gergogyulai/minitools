@@ -79,13 +79,47 @@ function scrapeAndDownloadImages() {
   });
 }
 
-// Function to add a download button to the top of the page
-function addDownloadButton() {
-  const button = document.createElement('button');
-  button.textContent = 'Download Images';
-  button.addEventListener('click', scrapeAndDownloadImages);
-  document.body.insertBefore(button, document.body.firstChild);
+// Function to initiate infinite scrolling
+function startInfiniteScroll() {
+  // Create an interval to scroll down the page repeatedly
+  const scrollInterval = setInterval(() => {
+    window.scrollBy(0, 100); // Adjust the scrolling speed if needed
+  }, 100); // Adjust the scrolling interval if needed
+
+  // Listen for the spacebar keypress to stop scrolling and scroll to the top
+  const stopScrolling = (event) => {
+    if (event.code === 'Space') {
+      clearInterval(scrollInterval);
+      window.removeEventListener('keydown', stopScrolling);
+      window.scrollTo(0, 0); // Scroll to the top of the page
+    }
+  };
+
+  window.addEventListener('keydown', stopScrolling);
 }
 
-// Call the function to add the download button to the top of the page
-addDownloadButton();
+// Function to add buttons to the DOM
+function addButtons() {
+  // Create a container for buttons
+  const buttonContainer = document.createElement('div');
+  buttonContainer.style.display = 'inline-block';
+  buttonContainer.style.marginRight = '10px';
+
+  // Create the download button
+  const downloadButton = document.createElement('button');
+  downloadButton.textContent = 'Download Images';
+  downloadButton.addEventListener('click', scrapeAndDownloadImages);
+  buttonContainer.appendChild(downloadButton);
+
+  // Create the infinite scroll button
+  const infiniteScrollButton = document.createElement('button');
+  infiniteScrollButton.textContent = 'Start Infinite Scroll';
+  infiniteScrollButton.addEventListener('click', startInfiniteScroll);
+  buttonContainer.appendChild(infiniteScrollButton);
+
+  // Insert the button container into the document
+  document.body.insertBefore(buttonContainer, document.body.firstChild);
+}
+
+// Call the function to add buttons to the DOM
+addButtons();
