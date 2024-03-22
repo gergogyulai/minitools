@@ -81,10 +81,13 @@ function scrapeAndDownloadImages() {
 
 // Function to initiate infinite scrolling
 function startInfiniteScroll() {
-  // Scroll down the page at max speed until spacebar is pressed
+  // Define the scrolling speed (in pixels)
+  const scrollSpeed = 100; // Adjust as needed
+
+  // Scroll down the page at the defined speed until spacebar is pressed
   const scrollInterval = setInterval(() => {
-    window.scrollBy(0, window.innerHeight); // Scroll down at max speed
-  }, 0); // Adjust the scrolling interval for max speed
+    window.scrollBy(0, scrollSpeed); // Scroll down at the defined speed
+  }, 100); // Adjust the scrolling interval if needed
 
   // Listen for the spacebar keypress to stop scrolling and scroll to the top
   const stopScrolling = (event) => {
