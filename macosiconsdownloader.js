@@ -57,18 +57,21 @@ function scrapeAndDownloadImages() {
     });
   });
 
-  // Wait for all downloads to complete and then create and download the zip
-  Promise.all(downloadPromises).then(() => {
-    createAndDownloadZip(zip, title); // Pass the webpage title as the zip filename
+  // Return the download promises
+  return Promise.all(downloadPromises).then(() => {
+    return { zip, title }; // Pass the zip and title for manual download trigger
   });
 }
 
-// Function to inject the JSZip library and start scraping and downloading images
+// Function to inject the JSZip library and start scraping images
 function injectAndStartDownload() {
   // Inject JSZip library
   var jsZipScript = document.createElement('script');
   jsZipScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js';
-  jsZipScript.onload = scrapeAndDownloadImages; // Call the function once JSZip is loaded
+  jsZipScript.onload = () => {
+    console.log('JSZip library loaded');
+    console.log('Click the "Download Images" button to download the images.');
+  };
   document.head.appendChild(jsZipScript);
 }
 
@@ -76,7 +79,11 @@ function injectAndStartDownload() {
 function addDownloadButton() {
   const button = document.createElement('button');
   button.textContent = 'Download Images';
-  button.addEventListener('click', injectAndStartDownload);
+  button.addEventListener('click', () => {
+    scrapeAndDownloadImages().then(({ zip, title }) => {
+      createAndDownloadZip(zip, title);
+    });
+  });
   document.body.insertBefore(button, document.body.firstChild);
 }
 
