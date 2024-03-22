@@ -4,13 +4,10 @@ jsZipScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.
 document.head.appendChild(jsZipScript);
 
 // Function to download an image and add it to the zip
-async function downloadAndAddToZip(url, zip) {
+async function downloadAndAddToZip(url, filename, zip) {
   try {
     const response = await fetch(url);
     const blob = await response.blob();
-
-    // Get the filename from the URL
-    const filename = url.substring(url.lastIndexOf('/') + 1);
 
     // Add the blob to the zip file
     zip.file(filename, blob);
@@ -36,7 +33,7 @@ function createAndDownloadZip(zip, title) {
   });
 }
 
-// Function to scrape image links from <a> tags inside <div> elements with the class "card-img-wrapper" and download them
+// Function to scrape image links and titles and download them
 function scrapeAndDownloadImages() {
   // Check if JSZip is defined
   if (typeof JSZip === 'undefined') {
@@ -47,25 +44,33 @@ function scrapeAndDownloadImages() {
   // Get the webpage's title
   const title = document.title;
 
-  // Find all <div> elements with the class "card-img-wrapper"
-  const divElements = document.querySelectorAll('div.card-img-wrapper');
+  // Find all <div> elements with the specified classes
+  const cardWrappers = document.querySelectorAll('div.card-wrapper.card-hover.coral-card.m-0');
 
   // Create a new instance of JSZip
   const zip = new JSZip();
 
-  // Iterate through the found <div> elements and find <a> tags inside them to download images
-  const downloadPromises = Array.from(divElements).flatMap((divElement) => {
-    const linkElements = divElement.querySelectorAll('a');
-    return Array.from(linkElements).map((linkElement) => {
+  // Iterate through the found <div> elements
+  cardWrappers.forEach((cardWrapper, index) => {
+    // Find <a> tags inside the current card wrapper
+    const linkElements = cardWrapper.querySelectorAll('a');
+    linkElements.forEach((linkElement, linkIndex) => {
       const imageUrl = linkElement.getAttribute('href');
-      return downloadAndAddToZip(imageUrl, zip);
+
+      // Find the corresponding <h3> tag for the title
+      const h3Title = cardWrapper.querySelector('h3');
+      if (h3Title) {
+        const titleText = h3Title.textContent.trim();
+        const filename = `${titleText}_${index}_${linkIndex}.jpg`; // Adjust filename as needed
+
+        // Download and add image to the zip
+        downloadAndAddToZip(imageUrl, filename, zip);
+      }
     });
   });
 
-  // Wait for all downloads to complete and then create and download the zip
-  Promise.all(downloadPromises).then(() => {
-    createAndDownloadZip(zip, title); // Pass the webpage title as the zip filename
-  });
+  // Create and download the zip file
+  createAndDownloadZip(zip, title);
 }
 
 // Function to add a download button to the top of the page
