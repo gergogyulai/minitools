@@ -132,5 +132,6 @@ function addButtons() {
   document.body.insertBefore(buttonContainer, document.body.firstChild);
 }
 
+
 // Call the function to add buttons to the DOM
 addButtons();
