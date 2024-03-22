@@ -34,7 +34,7 @@ function createAndDownloadZip(zip, title) {
 }
 
 // Function to scrape image links and titles and download them
-async function scrapeAndDownloadImages() {
+function scrapeAndDownloadImages() {
   // Check if JSZip is defined
   if (typeof JSZip === 'undefined') {
     console.error('JSZip library is not available.');
@@ -73,13 +73,11 @@ async function scrapeAndDownloadImages() {
     });
   });
 
-  // Wait for all download promises to resolve
-  await Promise.all(downloadPromises);
-
-  // Create and download the zip file
-  createAndDownloadZip(zip, title);
+  // After all download promises resolve, create and download the zip file
+  Promise.all(downloadPromises).then(() => {
+    createAndDownloadZip(zip, title);
+  });
 }
-
 
 // Function to add a download button to the top of the page
 function addDownloadButton() {
