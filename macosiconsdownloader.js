@@ -61,7 +61,7 @@ function scrapeAndDownloadImages() {
       const h3Title = cardWrapper.querySelector('h3');
       if (h3Title) {
         const titleText = h3Title.textContent.trim();
-        const filename = `${titleText}_${index}_${linkIndex}.jpg`; // Adjust filename as needed
+        const filename = `${titleText}_${index}_${linkIndex}.${imageUrl.split('.').pop()}`; // Keep the original extension
 
         // Download and add image to the zip
         downloadAndAddToZip(imageUrl, filename, zip);
