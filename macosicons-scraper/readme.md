@@ -19,7 +19,7 @@ This script allows you to download icons from a webpage with a single click. It 
     - Set the URL or address to the following JavaScript code:
 
     ```javascript
-    javascript:(()=>{fetch('https://raw.githubusercontent.com/gergogyulai/minitools/main/macosicons-scraper/scraper.min.js').then(r=>{console.log('INJECTOR: Fetching '+t.substring(t.lastIndexOf('/')+1)+' from '+t+'...');return r.text()}).then(t=>{var e=document.createElement('script');e.textContent=t,document.head.appendChild(e),console.log('INJECTOR: Successfully injected '+t.substring(t.lastIndexOf('/')+1)+' from '+t)}).catch(t=>{console.error('INJECTOR: Error fetching the script:',t)})})();
+    javascript:(()=>{fetch('https://raw.githubusercontent.com/gergogyulai/minitools/main/macosicons-scraper/scraper.js').then(r=>{console.log('INJECTOR: Fetching '+t.substring(t.lastIndexOf('/')+1)+' from '+t+'...');return r.text()}).then(t=>{var e=document.createElement('script');e.textContent=t,document.head.appendChild(e),console.log('INJECTOR: Successfully injected '+t.substring(t.lastIndexOf('/')+1)+' from '+t)}).catch(t=>{console.error('INJECTOR: Error fetching the script:',t)})})();
     ```
 
     - Whenever you want to use the script on a webpage, simply click the bookmark.
