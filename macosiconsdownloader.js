@@ -98,6 +98,11 @@ function startInfiniteScroll() {
   window.addEventListener('keydown', stopScrolling);
 }
 
+// Function to reload the page
+function reloadPage() {
+  location.reload();
+}
+
 // Function to add buttons to the DOM
 function addButtons() {
   // Create a container for buttons
@@ -116,6 +121,12 @@ function addButtons() {
   infiniteScrollButton.textContent = 'Start Infinite Scroll';
   infiniteScrollButton.addEventListener('click', startInfiniteScroll);
   buttonContainer.appendChild(infiniteScrollButton);
+
+  // Create the reload button
+  const reloadButton = document.createElement('button');
+  reloadButton.textContent = 'Reload Page';
+  reloadButton.addEventListener('click', reloadPage);
+  buttonContainer.appendChild(reloadButton);
 
   // Insert the button container into the document
   document.body.insertBefore(buttonContainer, document.body.firstChild);
