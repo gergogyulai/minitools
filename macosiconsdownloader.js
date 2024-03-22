@@ -135,9 +135,9 @@ function addButtons() {
   // Insert the button container into the document
   document.body.insertBefore(buttonContainer, document.body.firstChild);
 
-  console.log("SCRAPERSCRIPT: Successfully got injected")
 }
 
 
 // Call the function to add buttons to the DOM
 addButtons();
+console.log("SCRAPERSCRIPT: Successfully got injected")
