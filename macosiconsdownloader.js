@@ -63,8 +63,22 @@ function scrapeAndDownloadImages() {
   });
 }
 
-// Inject JSZip library
-var jsZipScript = document.createElement('script');
-jsZipScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js';
-jsZipScript.onload = scrapeAndDownloadImages; // Call the function once JSZip is loaded
-document.head.appendChild(jsZipScript);
+// Function to inject the JSZip library and start scraping and downloading images
+function injectAndStartDownload() {
+  // Inject JSZip library
+  var jsZipScript = document.createElement('script');
+  jsZipScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js';
+  jsZipScript.onload = scrapeAndDownloadImages; // Call the function once JSZip is loaded
+  document.head.appendChild(jsZipScript);
+}
+
+// Function to add a download button to the top of the page
+function addDownloadButton() {
+  const button = document.createElement('button');
+  button.textContent = 'Download Images';
+  button.addEventListener('click', injectAndStartDownload);
+  document.body.insertBefore(button, document.body.firstChild);
+}
+
+// Call the function to add the download button to the top of the page
+addDownloadButton();
