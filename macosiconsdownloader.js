@@ -2,6 +2,7 @@
 var jsZipScript = document.createElement('script');
 jsZipScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js';
 document.head.appendChild(jsZipScript);
+console.log("SCRAPERSCRIPT: Successfully got injected")
 
 // Function to download an image and add it to the zip
 async function downloadAndAddToZip(url, filename, zip) {
