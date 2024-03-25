@@ -68,7 +68,7 @@ function scrapeAndDownloadImages() {
 
   // Iterate through the found <a> elements and download their images
   const downloadPromises = Array.from(linkElements).map((linkElement) => {
-    const imageUrl = `https://www.themoviedb.org${linkElement.getAttribute('href')}`;
+    const imageUrl = linkElement.getAttribute('href');
     return downloadAndAddToZip(imageUrl, zip);
   });
 
