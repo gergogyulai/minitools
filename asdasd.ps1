@@ -3,19 +3,17 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     exit;
 }
 
-Write-Output "Restoring Windows 10 style context menu. Please wait."
+Write-Output "Enabling Windows 11 style context menu. Please wait."
 
-$ExplorerReg1 = "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
-$ExplorerReg2 = "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
+$ExplorerReg1 = "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}"
+$ExplorerReg2 = "HKCU:\Software\Classes\Wow6432Node\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}"
 
-# Remove the registry keys that control the context menu
-if (Test-Path $ExplorerReg1) {
-    Remove-Item -Path $ExplorerReg1 -Recurse -Force
-}
+# Create the registry keys to enable the new context menu
+New-Item -Path $ExplorerReg1 -Force
+New-ItemProperty -Path $ExplorerReg1 -Name "System.IsPinnedToNameSpaceTree" -Value 1 -PropertyType DWORD -Force
 
-if (Test-Path $ExplorerReg2) {
-    Remove-Item -Path $ExplorerReg2 -Recurse -Force
-}
+New-Item -Path $ExplorerReg2 -Force
+New-ItemProperty -Path $ExplorerReg2 -Name "System.IsPinnedToNameSpaceTree" -Value 1 -PropertyType DWORD -Force
 
 Write-Output "Restarting Explorer to apply changes."
 Start explorer.exe -NoNewWindow
