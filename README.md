@@ -4,8 +4,6 @@ Here, you'll find a collection of lightweight scripts and programs, at first wri
 
 ## 📚 Documentation Site
 
-Coming Soon!
-
 Stay tuned for a comprehensive documentation site where you can explore the features and usage of each tool in detail.
 
 ## 💡 Perks
