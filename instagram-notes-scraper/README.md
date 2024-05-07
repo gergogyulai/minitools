@@ -1,7 +1,7 @@
 # Instagram Note Scraper
 
 ## 🚀 Introduction
-You wan't to keep track of what you "friends" post on their Instagram Notes? This Python script fetches notes from Instagram and stores them in a Supabase database. It utilizes the `instagrapi` library for Instagram interactions and the `supabase-py` library for database operations. The script is designed to run periodically to collect new notes every 10 minutes.
+You wan't to keep track of what you "friends" post on their Instagram Notes? This Python script fetches notes from Instagram and stores them in a Supabase database. It utilizes the `instagrapi` library for Instagram interactions and the `supabase-py` library for database operations. The script is designed to run periodically to collect new notes every 10 minutes. It can be easily customized and extended to fit specific use cases, can use virtually any kind of database if you don't like Supabase.
 
 ## ⚙️ Setup
 Before running the script, ensure you have the necessary dependencies installed. You can install them using pip:
@@ -15,7 +15,7 @@ The script requires certain environment variables to be set in a `.env` file:
 - `INSTAGRAM_PASSWORD`: Your Instagram password.
 - `INSTAGRAM_2FA_SEED`: Your Instagram 2FA seed if used.
 - `SUPABASE_URL`: URL of your Supabase project.
-- `SUPABASE_KEY`: API key for accessing your Supabase project.
+- `SUPABASE_KEY`: API key for accessing your [Supabase](https://supabase.com/dashboard) project.
 
 There is a 2fa_setup.py helper included in the folder.
 
