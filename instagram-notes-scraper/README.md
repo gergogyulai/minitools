@@ -17,6 +17,8 @@ The script requires certain environment variables to be set in a `.env` file:
 - `SUPABASE_URL`: URL of your Supabase project.
 - `SUPABASE_KEY`: API key for accessing your Supabase project.
 
+There is a 2fa_setup.py helper included in the folder.
+
 If the `.env` file doesn't exist, the script prompts for these values and creates the file.
 
 ## 🚀 Usage
