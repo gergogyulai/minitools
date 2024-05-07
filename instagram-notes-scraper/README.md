@@ -21,7 +21,7 @@ There is a 2fa_setup.py helper included in the folder.
 
 If the `.env` file doesn't exist, the script prompts for these values and creates the file.
 
-If you are going to use Supabase to store the collected notes you will need a table named : `notes` with these fields: 
+If you are going to use Supabase to store the collected notes you will need a table named `notes` with these fields: 
 - id: int8
 - username: text
 - userid: text
